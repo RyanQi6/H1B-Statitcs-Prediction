@@ -1,0 +1,205 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+        <meta http-equiv="pragma" content="no-cache"/>  
+        <meta http-equiv="cache-control" content="no-cache"/>  
+        <meta http-equiv="expires" content="0"/> 
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <style>
+         html { 
+          background: url(https://static.pexels.com/photos/442577/pexels-photo-442577.jpeg) no-repeat center center fixed; 
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+	body{
+	   background:none;
+	}
+        
+
+          #title{
+            color:black;
+            text-align:center;
+            }
+          #subtitle{
+            text-align:center;
+          }
+        .container{
+            margin-top:20px;
+        }
+	#addcasebtn{
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        #editcasebtn{
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+      </style>
+  </head>
+  <body>
+       
+   <nav class="navbar navbar-inverse navbar-toggleable-md navbar-light bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+      </button>
+  <a class="navbar-brand" href="#">H1B-Statistics</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'MyCase' %}">MyCase</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Statistics' %}">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Prediction' %}">Prediction</a>
+      </li>
+    </ul>
+
+
+  </div>
+</nav>
+     
+         <div class="container">
+         <p class="lead" align="center" >Please Enter Your Case Number.</p>
+         <form class="form-inline" method="GET" action="findid" >
+          <div class="form-group mx-sm-3">
+            <label for="casenum" class="sr-only">Case Number</label>
+            <input class="form-control" id="casenum" name="casenum" placeholder="e.g. 10000">
+          </div>
+         <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+	{% if result %}
+	<div class="alert alert-info" role="alert">
+	<p>{{result}}</p>
+	</div>
+	{% endif %}
+         {% if Champaign %}
+        <div class="alert alert-warning" role="alert">
+        <p>{{Champaign}}</p>
+        </div>
+        {% endif %}
+         <br>
+         <br>
+         <p class="lead" align="center">Administrators can add your case to our database.</p>
+         <form class="form-inline" method="GET" action="insert" >
+          <div class="mx-sm-3" id="form2">
+            <label for="addcasenum" class="sr-only">Case Number</label>
+            <input class="form-control" id="addcasenum" name="addcasenum" placeholder="Enter case number">
+          </div>
+             <br>
+             <div class="form-group mx-sm-3" id="form3">
+            <label for="addemployer" class="sr-only">Employer</label>
+            <input class="form-control input-lg" id="addemployer" name="addemployer" placeholder="Enter employer">
+          </div>
+             <div class="form-group mx-sm-3" id="form4">
+            <label for="addjobtitle" class="sr-only">Job Title</label>
+            <input class="form-control" id="addjobtitle" name="addjobtitle" placeholder="Enter job title">
+          </div>
+             <div class="form-group mx-sm-3" id="form5">
+            <label for="addplace" class="sr-only">Place You Work</label>
+            <input class="form-control" id="addplace" name="addworkplace" placeholder="Enter work place">
+          </div>
+            
+            <div class="form-group mx-sm-3" id="form6">
+            <label for="addwage" class="sr-only">Wage</label>
+            <input class="form-control" id="addwage" name="addwage" placeholder="Enter your wage">
+            </div>
+	    <div class="form-group mx-sm-3" id="form61">
+            <label for="addwage" class="sr-only">Status</label>
+            <input class="form-control" id="addstatus" name="addstatus" placeholder="Enter your Status">
+          </div>
+	    <div class="form-group mx-sm-3">
+            <label for="addwage" class="sr-only">code</label>
+            <input class="form-control" type="password" id="admin1" name="admin1" placeholder="Admin authentication code">
+          </div>
+          <button type="submit" class="btn btn-success" id="addcasebtn">Insert</button>
+          </form>
+	{% if addalert %}
+        <div class="alert alert-info" role="alert">
+        <p>{{addalert}}</p>
+        </div>
+	{% endif %}
+          <br>
+          <p class="lead" align="center">Administrators can help you to update your case.</p>
+         <form class="form-inline" method="GET" action="update">
+         <div class="form-group mx-sm-3" id="form7">
+            <label for="editcasenum" class="sr-only">Case Number</label>
+            <input class="form-control" id="editcasenum" name="editcasenum" placeholder="Enter case number">
+          </div>
+             <br>
+             <div class="form-group mx-sm-3" id="form8">
+            <label for="addemployer" class="sr-only">Employer</label>
+            <input class="form-control input-lg" id="editemployer" name="editemployer" placeholder="Enter employer">
+          </div>
+             <div class="form-group mx-sm-3" id="form9">
+            <label for="addjobtitle" class="sr-only">Job Title</label>
+            <input class="form-control" id="editjobtitle" name="editjobtitle" placeholder="Enter job title">
+          </div>
+             <div class="form-group mx-sm-3" id="form10">
+            <label for="addplace" class="sr-only">Place You Work</label>
+            <input class="form-control" id="editplace" name="editplace" placeholder="Enter work place">
+          </div>
+            
+            <div class="form-group mx-sm-3" id="form11">
+            <label for="addwage" class="sr-only">Wage</label>
+            <input class="form-control" id="editwage" name="editwage" placeholder="Enter your wage">
+          </div>
+	  <div class="form-group mx-sm-3" id="form12">
+            <label for="addwage" class="sr-only">Status</label>
+            <input class="form-control" id="editstatus" name="editstatus" placeholder="Enter your Status">
+          </div>
+	  <div class="form-group mx-sm-3">
+            <label for="addwage" class="sr-only">code</label>
+            <input class="form-control" type="password" id="admin2" name="admin2" placeholder="Admin authentication code">
+          </div>
+
+        <button type="submit" class="btn btn-success" id="editcasebtn">Update</button>
+        </form>
+	<br>
+	{% if updatealert %}
+	<div class="alert alert-info" role="alert">
+        <p>{{updatealert}}</p>
+        </div>   
+	{% endif %}
+	<p class="lead" align="center" >Delete your case with the help of an administrator.</p>
+         <form class="form-inline" method="GET" action="deleteid" >
+          <div class="form-group mx-sm-3">
+            <label for="casenum" class="sr-only">Case Number</label>
+            <input class="form-control" id="delcasenum" name="delcasenum" placeholder="Enter case number">
+          </div>
+	<div class="form-group mx-sm-3">
+            <label for="addwage" class="sr-only">code</label>
+            <input class="form-control" type="password" id="admin3" name="admin3" placeholder="Admin authentication code">
+          </div>
+         <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+	{% if delresult %}
+        <div class="alert alert-info" role="alert">
+        <p>{{delresult}}</p>
+        </div>
+{% endif %}
+
+<br>
+<br>
+          </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

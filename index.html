@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+        <meta http-equiv="pragma" content="no-cache"/>  
+        <meta http-equiv="cache-control" content="no-cache"/>  
+        <meta http-equiv="expires" content="0"/> 
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <style>
+         html { 
+          background: url(https://static.pexels.com/photos/442577/pexels-photo-442577.jpeg) no-repeat center center fixed; 
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+        body{
+            background:none;
+        }
+
+          #title{
+            color:black;
+            text-align:center;
+            }
+          .subtitle{
+            text-align:center;
+          }
+        .container{
+            margin-top:120px;
+        }
+	#unvisible{
+	display:none;
+	}
+
+      </style>
+  </head>
+  <body>
+       
+   <nav class="navbar navbar-inverse navbar-toggleable-md navbar-light bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+      </button>
+  <a class="navbar-brand" href="">H1B-Statistics</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'MyCase' %}">MyCase</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Statistics' %}">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Prediction' %}">Prediction</a>
+      </li>
+    </ul>
+
+
+  </div>
+</nav>
+     <div class="container">
+            <h1 id="title">Know Your H1B</h1>
+            <p class="lead" class="subtitle">More than one million cases from the past few years are currently used for our statistics, and for you to make prediction!</p>
+            <p class="button" id="GenerateR" align="center"><a href="{% url 'about' %}" class="btn btn-lg btn-success">Things you need to know about H1B</a></p>
+          </div>
+ <script type="text/javascript">
+ /* document.getElementById("GenerateR").onclick=function(){
+       alert(document.getElementById("unvisible").innerHTML);
+   }*/
+   </script>
+      
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

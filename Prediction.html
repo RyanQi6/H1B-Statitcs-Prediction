@@ -1,0 +1,391 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+        <meta http-equiv="pragma" content="no-cache"/>  
+        <meta http-equiv="cache-control" content="no-cache"/>  
+        <meta http-equiv="expires" content="0"/> 
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  
+<style>
+ html { 
+  background: url(https://static.pexels.com/photos/442577/pexels-photo-442577.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+  #title{
+    color:black;
+    text-align:center;
+    }
+#ptitle{
+    color:black;
+    text-align:center;
+    }
+  #subtitle{
+    text-align:center;
+  }
+.container{
+    margin-top:40px; 
+}
+
+</style>
+<script>
+window.onload = function () {
+//var denied ='{{probDenied}}';
+//var withdraw='{{probWithdraw}}';
+//var cWithdraw='{{probCWithdraw}}'
+//var certified='{{probCertified}}'
+//var d=parseFloat(denied);
+//var w=parseFloat(withdraw);
+//var cw=parseFloat(cWithdraw);
+//var c=parseFloat(certified);
+//var values=new Array(result.length);
+//var len=result.length;
+//for (var i =0;i<result.length;i++){
+//values[i]=result[i]*100;
+//}
+var chart = new CanvasJS.Chart("chartContainer", {
+animationEnabled: true,
+        exportEnabled: true,
+        theme: "dark2", // "light1", "light2", "dark1", "dark2"
+        title:{
+                text: "Probablity of Predicted Results"
+        },
+        axisY: {
+                title: "Probablity (in percentage)",
+                suffix: "",
+                reversed: true
+        },
+        axisX2: {
+                tickThickness: 0,
+                labelAngle: 0
+        },
+        data: [{
+                type: "column",
+                axisXType: "secondary",
+                yValueFormatString: "0.##",
+                dataPoints: [
+                        { y: {{predResult.1}}, label: "WITHDRAW" },
+                        { y: {{predResult.3}}, label: "CERTIFIED" , indexLabel: "Certified"},
+                        { y: {{predResult.0}}, label: "DENIED" },
+                        { y: {{predResult.2}}, label: "CERTIFIED-WITHDRAW" },
+               		{ y: {{predResult.4}}, label: "LOTTERY MISSED" },
+
+		]
+        }]
+});
+chart.render();
+
+
+
+var chart2 = new CanvasJS.Chart("chartContainer2", {
+animationEnabled: true,
+        exportEnabled: true,
+        theme: "dark2", // "light1", "light2", "dark1", "dark2"
+        title:{
+                text: "Conditional Probabilty Given Lottery Won"
+        },
+        axisY: {
+                title: "Probablity (in percentage)",
+                suffix: "",
+                reversed: true
+        },
+        axisX2: {
+                tickThickness: 0,
+                labelAngle: 0
+        },
+        data: [{
+                type: "column",
+                axisXType: "secondary",
+                yValueFormatString: "0.##",
+                dataPoints: [
+                        { y: {{Afterlottery.1}}, label: "WITHDRAW" },
+                        { y: {{Afterlottery.3}}, label: "CERTIFIED" , indexLabel: "Certified"},
+                        { y: {{Afterlottery.0}}, label: "DENIED" },
+                        { y: {{Afterlottery.2}}, label: "CERTIFIED-WITHDRAW" },
+                ]
+        }]
+});
+chart2.render();
+
+}
+
+
+</script> 
+ </head>
+  <body>
+       
+   <nav class="navbar navbar-inverse navbar-toggleable-md navbar-light bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+      </button>
+  <a class="navbar-brand" href="#">H1B-Statistics</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'MyCase' %}">MyCase</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Statistics' %}">Statistics</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'Prediction' %}">Prediction</a>
+      </li>
+    </ul>
+
+
+  </div>
+</nav>
+
+     <div class="container">
+<!--{% if predResult %}
+<div id="chartContainer" style="height: 300px; width: 60%; text-align:center"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{% endif  %}-->
+
+     <form method = "GET" action = "MakePredictions" >
+  <div class="form-group">
+    <h3 id="ptitle">Please fill up the form for prediction.</h3>
+    <small id="titlehelp" class="form-text text-muted" align="center">We'll never share your information with anyone else.</small>
+    <hr>
+  </div>
+  <div class="form-group">
+    <label for="jobtitle">Your Job Title</label>
+    <input class="form-control" id="jobtitle" name="jobtitle" placeholder="e.g. Software Developers, Applications">
+  </div>
+{% if SocNotFound %}
+<div class="alert alert-danger" role="alert">
+        <p>{{SocNotFound}}</p>
+        </div>
+{% endif %}
+  <div class="form-group">
+    <label for="state">Select the state where you work</label>
+    <select class="form-control" id="state" name="state">
+		<option value="ALABAMA">Alabama</option>
+                    <option value="ALASKA">Alaska</option>
+                    <option value="ARIZONA">Arizona</option>
+                    <option value="ARKANSAS">Arkansas</option>
+                    <option value="CALIFORNIA">California</option>
+                    <option value="COLORADO">Colorado</option>
+                    <option value="CONNECTICUT">Connecticut</option>
+                    <option value="DELAWARE">Delaware</option>
+                    <option value="DISTRICT OF COLUMBIA">District Of Columbia</option>
+                    <option value="FLORIDA">Florida</option>
+                    <option value="GEORGIA">Georgia</option>
+                    <option value="HAWAII">Hawaii</option>
+                    <option value="IDAHO">Idaho</option>
+                    <option value="ILLINOIS">Illinois</option>
+                    <option value="INDIANA">Indiana</option>
+                    <option value="IOWA">Iowa</option>
+                    <option value="KANSAS">Kansas</option>
+                    <option value="KENTUCKY">Kentucky</option>
+                    <option value="LOUISIANA">Louisiana</option>
+                    <option value="MAINE">Maine</option>
+                    <option value="MARYLAND">Maryland</option>
+                    <option value="MASSACHUSETTS">Massachusetts</option>
+                    <option value="MICHIGAN">Michigan</option>
+                    <option value="MINNESOTA">Minnesota</option>
+                    <option value="MISSISSIPPI">Mississippi</option>
+                    <option value="MISSOURI">Missouri</option>
+                    <option value="MONTANA">Montana</option>
+                    <option value="NEBRASKA">Nebraska</option>
+                    <option value="NEVADA">Nevada</option>
+                    <option value="NEW HAMPSHIRE">New Hampshire</option>
+                    <option value="NEW JERSEY">New Jersey</option>
+                    <option value="NEW MEXICO">New Mexico</option>
+                    <option value="NEW YORK">New York</option>
+                    <option value="NORTH CAROLINA">North Carolina</option>
+                    <option value="NORTH DAKOTA">North Dakota</option>
+                    <option value="OHIO">Ohio</option>
+                    <option value="OKLAHOMA">Oklahoma</option>
+                    <option value="OREGON">Oregon</option>
+                    <option value="PENNSYLVANIA">Pennsylvania</option>
+                    <option value="RHODE ISLAND">Rhode Island</option>
+                    <option value="SOUTH CAROLINA">South Carolina</option>
+                    <option value="SOUTH DAKOTA">South Dakota</option>
+                    <option value="TENNESSEE">Tennessee</option>
+                    <option value="TEXAS">Texas</option>
+                    <option value="UTAH">Utah</option>
+                    <option value="VERMONT">Vermont</option>
+                    <option value="VIRGINIA">Virginia</option>
+                    <option value="WASHINGTON">Washington</option>
+                    <option value="WEST VIRGINIA">West Virginia</option>
+                    <option value="WISCONSIN">Wisconsin</option>
+                    <option value="WYOMING">Wyoming</option>
+
+    <!--<option value="AL">Alabama</option>
+	<option value="AK">Alaska</option>
+	<option value="AZ">Arizona</option>
+	<option value="AR">Arkansas</option>
+	<option value="CA">California</option>
+	<option value="CO">Colorado</option>
+	<option value="CT">Connecticut</option>
+	<option value="DE">Delaware</option>
+	<option value="DC">District Of Columbia</option>
+	<option value="FL">Florida</option>
+	<option value="GA">Georgia</option>
+	<option value="HI">Hawaii</option>
+	<option value="ID">Idaho</option>
+	<option value="IL">Illinois</option>
+	<option value="IN">Indiana</option>
+	<option value="IA">Iowa</option>
+	<option value="KS">Kansas</option>
+	<option value="KY">Kentucky</option>
+	<option value="LA">Louisiana</option>
+	<option value="ME">Maine</option>
+	<option value="MD">Maryland</option>
+	<option value="MA">Massachusetts</option>
+	<option value="MI">Michigan</option>
+	<option value="MN">Minnesota</option>
+	<option value="MS">Mississippi</option>
+	<option value="MO">Missouri</option>
+	<option value="MT">Montana</option>
+	<option value="NE">Nebraska</option>
+	<option value="NV">Nevada</option>
+	<option value="NH">New Hampshire</option>
+	<option value="NJ">New Jersey</option>
+	<option value="NM">New Mexico</option>
+	<option value="NY">New York</option>
+	<option value="NC">North Carolina</option>
+	<option value="ND">North Dakota</option>
+	<option value="OH">Ohio</option>
+	<option value="OK">Oklahoma</option>
+	<option value="OR">Oregon</option>
+	<option value="PA">Pennsylvania</option>
+	<option value="RI">Rhode Island</option>
+	<option value="SC">South Carolina</option>
+	<option value="SD">South Dakota</option>
+	<option value="TN">Tennessee</option>
+	<option value="TX">Texas</option>
+	<option value="UT">Utah</option>
+	<option value="VT">Vermont</option>
+	<option value="VA">Virginia</option>
+	<option value="WA">Washington</option>
+	<option value="WV">West Virginia</option>
+	<option value="WI">Wisconsin</option>
+	<option value="WY">Wyoming</option>-->
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="wage">Enter your wage.</label>
+    <input class="form-control" id="wage" name="wage" placeholder="e.g.150000">
+  </div>
+{% if WageNotFound %}
+<div class="alert alert-danger" role="alert">
+        <p>{{WageNotFound}}</p>
+        </div>
+{% endif %}
+  <div class="form-group">
+    <label for="description">Please describe your work briefly (optional)</label>
+    <textarea class="form-control" id="description" rows="5"></textarea>
+  </div>
+  <div class="form-group">
+  <p>Specify your education background</p> 
+  <select class="form-control" id="degree" name="degree">
+                <option value="1">I have not attended college</option>
+                <option value="2">I have a Bachelor's degree</option>
+                <option value="3">I have a Master's degree</option>
+                <option value="4">I have a Doctor's degree</option>
+                <option value="5">I'm a Postdoctoral Scholar</option>
+		<option value="6">I'm not willing to say</option>
+ </select>
+ </div>
+ <br>
+ 
+ <div class = "form-group">
+   <p>Specify your working status</p> 
+  <select class="form-control" id="fulltime" name="fulltime">
+                <option value="1">I'm a full time employee</option>
+                <option value="2">I'm a part-time employee</option>
+ </select>
+ </div>
+
+
+ 
+ <!-- <fieldset class="form-group">
+    <legend>Specify your education background</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="deg1" id="optionsRadios1" value="option1" checked>
+        I had not attended college.
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="deg2" id="optionsRadios2" value="option2">
+        I have a Bachelor's degree.
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="deg3" id="optionsRadios3" value="option3">
+        I have a Master's degree.
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="deg4" id="optionsRadios4" value="option4">
+        I have a Doctor's degree.
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="deg5" id="optionsRadios5" value="option5">
+        I'm a Postdoctoral Scholar.
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="deg6" id="optionsRadios6" value="option6">
+        I'm not willing to say.
+      </label>
+    </div>
+  </fieldset>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input" name="fulltime" id="fulltime" >
+      I'm a full-time employee.
+    </label>
+  </div>-->
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<br>
+<br>
+<br>
+    </div>
+<!--
+<div class="alert alert-danger" role="alert">
+        <p>{{SocNotFound}}</p>
+        </div>
+-->
+{% if predResult %}
+<div id="chartContainer" style="height: 300px; width: 60%; margin-left:300px"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{% endif %}
+{% if predResult %}
+<div id="chartContainer2" style="height: 300px; width: 60%; margin-left:300px"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{% endif %}
+<br>
+<br>
+
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

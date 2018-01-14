@@ -1,0 +1,748 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>About H1B</title>
+<link rel="alternate" type="application/rss+xml" title="egrappler.com" href="feed/index.html">
+<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet"
+        type="text/css">
+<style type="text/css">.pln {
+  color: #333333;
+}
+.prettyprint{overflow:auto!important;}
+
+@media screen {
+  /* string content */
+  .str {
+    color: #dd1144;
+  }
+
+  /* a keyword */
+  .kwd {
+    color: #333333;
+  }
+
+  /* a comment */
+  .com {
+    color: #999988;
+  }
+
+  /* a type name */
+  .typ {
+    color: #445588;
+  }
+
+  /* a literal value */
+  .lit {
+    color: #445588;
+  }
+
+  /* punctuation */
+  .pun {
+    color: #333333;
+  }
+
+  /* lisp open bracket */
+  .opn {
+    color: #333333;
+  }
+
+  /* lisp close bracket */
+  .clo {
+    color: #333333;
+  }
+
+  /* a markup tag name */
+  .tag {
+    color: navy;
+  }
+
+  /* a markup attribute name */
+  .atn {
+    color: teal;
+  }
+
+  /* a markup attribute value */
+  .atv {
+    color: #dd1144;
+  }
+
+  /* a declaration */
+  .dec {
+    color: #333333;
+  }
+
+  /* a variable name */
+  .var {
+    color: teal;
+  }
+
+  /* a function name */
+  .fun {
+    color: #990000;
+  }
+}
+/* Use higher contrast and text-weight for printable form. */
+@media print, projection {
+  .str {
+    color: #006600;
+  }
+
+  .kwd {
+    color: #006;
+    font-weight: bold;
+  }
+
+  .com {
+    color: #600;
+    font-style: italic;
+  }
+
+  .typ {
+    color: #404;
+    font-weight: bold;
+  }
+
+  .lit {
+    color: #004444;
+  }
+
+  .pun, .opn, .clo {
+    color: #444400;
+  }
+
+  .tag {
+    color: #006;
+    font-weight: bold;
+  }
+
+  .atn {
+    color: #440044;
+  }
+
+  .atv {
+    color: #006600;
+  }
+}
+/* Style */
+pre.prettyprint {
+  background: #F0F0F0;
+  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 1px solid #cccccc;
+  padding: 0;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #888;
+}
+
+.linenums li {
+  background: #FAFAFA;
+  padding-left: 10px;
+  border-left: 1px solid #CCC;
+}
+
+.linenums li {
+  padding-top: 5px;
+}
+
+.linenums li + li {
+  padding-top: 0;
+}
+
+.linenums li:last-child {
+  padding-bottom: 5px;
+}
+
+
+
+/* IE indents via margin-left */
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L4,
+li.L5,
+li.L6,
+li.L7,
+li.L8,
+li.L9 {
+  /* */
+}
+
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 {
+  /* */
+}</style>
+<style type="text/css">body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body, 
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Raleway", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    font-size: 18px;
+}
+
+body {
+    line-height: 2;
+    color: #444;
+    background: #fff;
+}
+
+img, iframe {
+    max-width: 100%;
+}
+
+iframe {
+    max-height: 100%;
+}
+
+img {
+    height:auto;
+}
+
+iframe {
+    border: 0 !important;
+}
+
+
+header {
+    width: 100%;
+    overflow: hidden;
+}
+
+.container {
+    width: 95%;
+    max-width: 650px;
+    margin: 0 auto;
+    position: relative;
+}
+
+strong, dt, h3, h4 {
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 10px 0;
+    line-height: 20px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
+
+h1,
+h2,
+h3 {
+    line-height: 40px;
+}
+
+h2 {
+    font-size: 50px;
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 24.5px;
+}
+
+h4 {
+    font-size: 17.5px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 11.9px;
+}
+
+hr {
+    background: #EEE;
+    border: 0;
+    height: 1px;
+    margin: 40px 0 40px;
+}
+
+blockquote {
+    margin: 1em 0;
+    border-left: 3px solid #ccc;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.copyrights{
+  text-indent:-9999px;
+  height:0;
+  line-height:0;
+  font-size:0;
+  overflow:hidden;
+}
+
+dt {
+}
+
+dd {
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+a {
+    -webkit-transition: all ease 150ms;
+    -moz-transition: all ease 150ms;
+    -o-transition: all ease 150ms;
+    transition: all ease 150ms;
+    text-decoration: none;
+    color: #26abe2;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    color: #47b5e2;
+}
+
+/* Header Styles */
+header {
+    padding: 2em 0 2em 0; 
+    text-align: center; 
+    background: #26abe2; 
+    color: #fff;
+}
+
+
+h1 {
+    margin: 0;
+    padding: 0;
+    float: left;
+  color:#fff;
+  font-weight:bold;
+  font-size:35px;
+  text-transform:uppercase;
+  padding-top: 10px;
+  margin-right:30px;
+}
+
+header h2 {
+    margin: 0 0 1em 0;
+}
+
+header h2.docs-header {
+    margin: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5em 0;
+}
+
+footer p {
+    margin: 0;
+    color: #999;
+}
+
+
+
+/* Navigation Styles */
+nav {
+    background: #135571;
+    padding: 10px 0;
+    min-height: 60px;
+}
+
+nav ul, nav li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    padding: 0 1em;
+    color: #EEE;
+    font-size: .9em;
+    height: 60px;
+    line-height: 60px;
+    display: block;
+}
+
+nav h1 a {
+    padding: 7px 1em;
+    height: 46px;
+    line-height: 0;
+  height: 45px;
+  line-height: 45px;
+}
+
+nav a:hover {
+    background: #195974;
+    text-decoration: none;
+}
+
+nav a:active {
+    background: #27637e;
+}
+
+
+nav a:active {
+    color: #fff;
+    cursor: default;
+}
+
+
+
+nav ul.toplinks {
+    padding: 20px 0 0 0;
+}
+
+nav #menu {
+    overflow: hidden;
+    max-height: 0;
+    clear: left;
+}
+
+
+nav #menu-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.5em;
+    padding: 0 16px;
+}
+
+
+@media only screen and (min-width: 680px) {
+    nav, nav #menu {
+        height: 60px !important;
+    }
+
+    nav li, nav a {
+        float: left;
+    }
+
+
+    nav ul.toplinks {
+        float: left;
+        padding: 0;
+        clear: none;
+    }
+
+    nav ul.toplinks li {
+        margin: 0 0 0 10px;
+    }
+
+    nav #menu-toggle {
+        display: none !important;
+    }
+
+    nav #menu {
+        max-height: 9999px;
+        clear: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* Content Styles */
+section { padding: 1em 0 3em; text-align: center; }
+section.vibrant { background: #222; color: #fff; }
+
+nav:before, 
+nav:after, 
+header:before, 
+header:after, 
+section:before, 
+section:after {
+    content: " ";
+    display: table;
+}
+
+nav:after, header:after, section:after  { clear: both; }
+nav, header, section { *zoom: 1; }
+
+
+
+/* Form Styles */
+input {
+    display: block;
+    vertical-align: middle;
+    line-height: 30px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+
+       -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+
+    -webkit-transition: all linear 0.2s;
+    -moz-transition: all linear 0.2s;
+    -o-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+}
+
+
+
+
+
+
+
+input:focus {
+    border-color: #007eb2;
+    outline: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.docs-nav {
+    background-color: #f5f5f5;
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding: 15px 20px;
+    font-size: 0.97em;
+}
+
+.docs-nav a {
+    display: block;
+    margin: 0 -20px;
+    padding: 0 20px;
+    text-decoration: none;
+    border-right: 2px solid transparent;
+}
+
+@media only screen and (min-width: 400px) {
+
+}
+
+@media only screen and (min-width: 600px) {
+
+}
+
+@media only screen and (min-width: 960px) {
+        .docs-nav {
+        position: absolute;
+        top: 0;
+        width: 220px;
+
+        -webkit-transition: top linear 50ms;
+        -moz-transition: top linear 50ms;
+        -o-transition: top linear 50ms;
+        transition: top linear 50ms;
+    }
+
+    .docs-nav.fixed {
+        position: fixed;
+        top: 49px;
+        width: 220px;
+    }
+
+    .docs-nav a:hover {
+        background: #eee;
+    }
+
+    .docs-nav a:active, 
+    .docs-nav .active {
+        background: #eee;
+        border-right: 2px solid #ccc;
+    }
+
+    .docs-nav .separator {
+        height: 20px;
+    }
+
+    .docs-content {
+        padding-left: 310px;
+    }
+
+
+
+    header {
+        padding: 4em 0 4em 0; 
+    }
+
+    .container {
+        max-width: 1000px;
+        padding: 0 20px;
+    }
+
+    section { padding: 3em 0; text-align: left; }
+    section.centered {
+        text-align: center;
+    }
+
+
+
+
+
+
+
+
+
+    input {
+        display: inline-block;
+    }
+
+
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <h1>H1B intro</h1>
+    <div id="menu">
+      <ul class="toplinks">
+        <li><a href="http://fa17-cs411-14.cs.illinois.edu/">home</a></li>
+        <li><a href="https://www.uscis.gov/working-united-states/temporary-workers/h-1b-specialty-occupations-and-fashion-models/h-1b-fiscal-year-fy-2018-cap-season">H1B official</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/H-1B_visa">Wiki</a></li>
+      </ul>
+    </div>
+    <a id="menu-toggle" href="#" class=" ">&#9776;</a> </div>
+</nav>
+<header>
+  <div class="container">
+    <h2 class="docs-header"> H1B VISA- Working Legitimately in US</h2>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <ul class="docs-nav" id="menu-left">
+      <li><strong>Basics you should know about H1B VISAS</strong></li>
+      <li><a href="#Intro to H1B VISAS" class=" ">Intro to H1B VISAS</a></li>
+      <li><a href="#Reqirements for Qualification" class=" ">Reqirements for Qualification</a></li>
+      <li><a href="#Rules for Caps on H1B" class=" ">Rules for Caps on H1B</a></li>
+      <li><a href="#Rules for Extending H1B" class=" ">Rules for Extending H1B</a></li>
+      <li class="separator"></li>
+      <li><strong>Some Suggestions</strong></li>
+      <li><a href="#Contact Your Lawyers" class=" ">Contact Your Lawyers</a></li>
+      <li><a href="#Formalities" class=" ">Formalities</a></li>
+      <li><a href="#Communicate with Employer" class=" ">Communicate with Employer</a></li>
+    </ul>
+    <div class="docs-content">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8Xf0EkwdgyQ" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+      <h2> Basics you should know about H1B VISAS</h2>
+      <h3 id="Intro to H1B VISAS">Intro to H1B VISAS</h3>
+      <p> What is H1B VISA?</p>
+      
+      <p> The H1B visa is a type of nonimmigrant visa that allows the visa holder to work in a statutorily defined “specialty occupation” in the United States for three years, with extensions possible in most cases. In order to apply, the nonimmigrant applicant's employer must submit an H1B petition to the United States Citizenship and Immigration Services (USCIS).</p>
+
+      <h3 id="Reqirements for Qualification">Reqirements for Qualification</h3>
+      <p> Since 1990, H1B visas are issued only for employment in a “specialty occupation” that requires theoretical and practical application of a specialized body of knowledge. H1B applicants must meet the following criteria to be eligible for an H1B visa:</p>
+      <ul>
+        <li>Must obtain a state license to practice the job being applied for, if applicable</li>
+        <li>Must have either a bachelor's or higher degree in the specialty being applied for or have experience in the specialty that is deemed equivalent to a bachelor's degree or higher</li>
+      </ul>
+      <h3 id="Rules for Caps on H1B">Rules for Caps on H1B</h3>
+      <p> Meeting the criteria for eligibility for an H1B visa does not guarantee that the applicant will obtain one. Since 2004, the United States has capped the number of H1B visas it grants at 65,000 per year, and each year the demand for H1B visas has far outstripped the supply.</p>
+
+      <p>Of the 65,000 available H1B visas, 6,800 are set aside for a special admission labeled H-1B1. 5,400 H-1B1 visas are set aside for nationals of Singapore and 1,400 for nationals of Chile. If any of the 6,800 H-1B1 visas are not allocated in a given year, the extra H-1B1 visas are returned to the main H1B visa pool for general applicants.</p>
+
+      <p>Since 2004, there has been a separate pool of 20,000 H1B visas under the H1B Advanced Degree Exemption. If an employer is seeking an H1B visa for a foreign worker with a master's degree or higher, the employer may first apply for one of the 20,000 H1B visas created by the H1B Master's Degree Exemption. While employers may not seek both a regular H1B visa and an H1B Master's Degree Exemption simultaneously visa, unsuccessful applicants for the H1B Master's Degree Exemption visa are subsequently placed in the pool of applicants for normal H1B visas. Applicants with master's degrees or higher should always first apply for the H1B Master's Degree Exemption in order to have the best chance to obtain an available H1B visa.</p>
+      <h3 id="Rules for Extending H1B">Rules for Extending H1B</h3>
+      <p> H1B status is granted for three years and may be extended for up to three additional years. After six years on H1B status, H1B workers must spend at least one year outside of the country before they can be readmitted under the same status. The H1B visa status of an employee may be extended in 1-year increments iIf the H1B worker has a request for labor certification or application for employment-based immigration that has been pending for more than 365 days. If the employment-based petition is approved, he or she may be eligible for a three-year extension if the adjustment of status is still pending.</p>
+      <p>The following H1B workers are not subject to the 6-year limitation on admission rules:</p>
+
+      <hr>
+      <h2> Some Suggestions</h2>
+      <p> The period of time of preparing for applicaiton is very important, though there is some factor of luck, you still need to be fully prepared. Here are some suggestions:</p>
+      <h3 id="Contact Your Lawyers">Contact Your Lawyers</h3>
+      <ul>
+        <li>Get in touch with your lawyers</li>
+        <li>Look for goals you have to meet</li>
+        <li>Approximate the times that you have to meet your goals</li>
+      </ul>
+     
+      <h3 id="Formalities">Formalities</h3>
+      <p>Please make sure you get the formalities you need as soon as possible which is important depending on your country's bureaucracy. Here are the mandatory documents you need to have:</p>
+      <ul>
+        <li>Valid original passport. You are recommended to have passport valid for at least six months beyond your interview date.</li>
+        <li>All old passports held.</li>
+        <li>One photograph as per specification.</li>
+        <li>US Visa Application Form DS-160 confirmation page stamped at the Visa Application Center (VAC).</li>
+        <li>US Visa Application Fee payment receipt.</li>
+        <li>Visa Interview appointment letter.</li>
+        <li>Original Notice of Action-I-797.</li>
+        <li>Blanket L1 applicants must carry the original I-129 and a copy of the Notice of Action I-797.</li>
+      </ul>
+      
+      <h3 id="Communicate with Employer">Communicate with Employer</h3>
+      <p>The communication between the employer and the employee must be fluent especially in the months prior to submitting papers, so make sure you have consistent and direct communication.</p>
+  
+    </div>
+  </div>
+</section>
+<section class="vibrant centered">
+</section>
+<script src="./js/jquery.min.js"></script> 
+ 
+<script type="text/javascript" src="./js/prettify/prettify.js"></script> 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="./js/layout.js"></script>
+ <script src="./js/jquery.localscroll-1.2.7.js" type="text/javascript"></script>
+ <script src="./js/jquery.scrollTo-1.4.3.1.js" type="text/javascript"></script>
+</body>
+</html>

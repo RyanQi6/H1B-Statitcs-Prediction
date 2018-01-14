@@ -1,0 +1,501 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+        <meta http-equiv="pragma" content="no-cache"/>  
+        <meta http-equiv="cache-control" content="no-cache"/>  
+        <meta http-equiv="expires" content="0"/> 
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <style>
+         html { 
+          background: url(https://static.pexels.com/photos/442577/pexels-photo-442577.jpeg) no-repeat center center fixed; 
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+	body{
+	   background:none;
+	}
+          #title{
+            color:black;
+            text-align:center;
+            }
+          #subtitle{
+            text-align:center;
+          }
+        .container{
+            margin-top:120px;
+        }
+	 #statbywage
+        {
+            margin:30px;
+            border-radius:25px;
+            width:94%;
+            height:500px;
+	    background:rgba(255, 255, 255, 0.85);
+	    filter:alpha(opacity=85);
+        }
+         #statbystate
+        {
+            margin:30px;
+            border-radius:25px;
+            width:94%;
+            height:500px;
+	    background:rgba(255, 255, 255, 0.85);
+            filter:alpha(opacity=85);
+        }
+	#statlikeme
+        {
+            margin:30px;
+            border-radius:25px;
+            width:94%;
+            height:500px;
+            background:rgba(255, 255, 255, 0.85);
+            filter:alpha(opacity=85);
+        }
+	#statcolleague{
+	 
+        
+            margin:30px;
+            border-radius:25px;
+            width:94%;
+            height:500px;
+            background:rgba(255, 255, 255, 0.85);
+            filter:alpha(opacity=85);
+       
+	}
+	#statbycompany{
+            margin:30px;
+            border-radius:25px;
+            width:94%;
+            height:500px;
+            background:rgba(255, 255, 255, 0.85);
+            filter:alpha(opacity=85);
+
+        }
+	.tableresult{
+	    margin-left:30px;
+	    width:90%;
+	    height:300px;
+	    overflow:scroll;
+	}
+      </style>
+      <script>
+	//var certified = {{statcmpres.0}};
+	//var certifiedw = {{statcmpres.1}};
+	//var withdrawn = {{statcmpres.2}};
+	//var denied = {{statcmpres.3}};
+	window.onload = function(){
+	//var kwa = '{{keyword}}';
+	//var kwb = '{{mycaseid}}';
+	var flag1 = {{statcmpres.0}}
+	var flag2 = {{colleaguestat.0}}
+	var flag3 = {{likemeres.0}}
+	var flag4 = {{stateres.0}}
+	if(flag1 > -1){
+	var kwa = '{{keyword}}';
+	var c = {{statcmpres.0}};
+	var cw = {{statcmpres.1}};
+	var w = {{statcmpres.2}};
+	var dr = {{statcmpres.3}};
+	var chart1 = new CanvasJS.Chart("chartContainer1", {
+	theme: "dark2", // "light1", "light2", "dark1", "dark2"
+	animationEnabled: true,
+	exportEnabled: true,
+	title: {
+		text: "Case status on applicants from "+kwa
+	},
+	data: [{
+		type: "pie",
+		startAngle: 30,
+		toolTipContent: "<b>{label}</b>: {y}",
+		showInLegend: "true",
+		legendText: "{label}",
+		indexLabelFontSize: 16,
+		indexLabel: "{label} - {y}",
+		dataPoints: [
+			{ y:c/*{{statcmpres.0}}*/, label: "Certified" },
+			{ y:cw/*{{statcmpres.1}}*/, label: "Certified-Withdrawn" },
+			{ y:w/*{{statcmpres.2}}*/, label: "Withdrawn" },
+			{ y:dr/*{{statcmpres.3}}*/, label: "Denied" }
+			]
+		}]
+	});
+	chart1.render();
+}
+
+	if(flag2 > -1){
+	var kwb = '{{mycaseid}}';
+	var c2 = {{colleaguestat.0}};
+        var cw2 = {{colleaguestat.1}};
+        var w2 = {{colleaguestat.2}};
+        var dr2 = {{colleaguestat.3}};
+        var chart2 = new CanvasJS.Chart("chartContainer2", {
+        theme: "dark2", // "light1", "light2", "dark1", "dark2"
+ 	exporeEnabled: true,
+        animationEnabled: true,
+        title: {
+                text: "Hello, applicant "+kwb+", here is the statistics on your colleagues"
+        },
+        data: [{
+                type: "pie",
+                startAngle: 30,
+                toolTipContent: "<b>{label}</b>: {y}",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}",
+                dataPoints: [
+                        { y:c2/*{{colleaguestat.0}}*/, label: "Certified" },
+                        { y:cw2/*{{colleaguestat.1}}*/, label: "Certified-Withdrawn" },
+                        { y:w2/*{{colleaguestat.2}}*/, label: "Withdrawn" },
+                        { y:dr2/*{{colleaguestat.3}}*/, label: "Denied" }
+                        ]
+                }]
+        });
+        chart2.render(); 
+}
+
+	if(flag3 > -1){
+        var kwc = '{{mycaseid}}';
+        var c3 = {{likemeres.0}};
+        var cw3 = {{likemeres.1}};
+        var w3 = {{likemeres.2}};
+        var dr3 = {{likemeres.3}};
+        var chart3 = new CanvasJS.Chart("chartContainer3", {
+        theme: "dark1", // "light1", "light2", "dark1", "dark2"
+        exporeEnabled: true,
+        animationEnabled: true,
+        title: {
+                text: "Hello, applicant "+kwc+", here is the statistics on applicants similar to you"
+        },
+        data: [{
+                type: "pie",
+                startAngle: 30,
+                toolTipContent: "<b>{label}</b>: {y}",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}",
+                dataPoints: [
+                        { y:c3/*{{colleaguestat.0}}*/, label: "Certified" },
+                        { y:cw3/*{{colleaguestat.1}}*/, label: "Certified-Withdrawn" },
+                        { y:w3/*{{colleaguestat.2}}*/, label: "Withdrawn" },
+                        { y:dr3/*{{colleaguestat.3}}*/, label: "Denied" }
+                        ]
+                }]
+        });
+        chart3.render(); 
+}
+	if(flag4 > -1){
+	var kws = '{{state}}';
+        var c3 = {{stateres.0}};
+        var cw3 = {{stateres.1}};
+        var w3 = {{stateres.2}};
+        var dr3 = {{stateres.3}};
+        var chart4 = new CanvasJS.Chart("chartContainer4", {
+        theme: "dark1", // "light1", "light2", "dark1", "dark2"
+        exporeEnabled: true,
+        animationEnabled: true,
+        title: {
+                text: "Statistics on applicants work in "+kws
+        },
+        data: [{
+                type: "pie",
+                startAngle: 30,
+                toolTipContent: "<b>{label}</b>: {y}",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}",
+                dataPoints: [
+                        { y:c3/*{{colleaguestat.0}}*/, label: "Certified" },
+                        { y:cw3/*{{colleaguestat.1}}*/, label: "Certified-Withdrawn" },
+                        { y:w3/*{{colleaguestat.2}}*/, label: "Withdrawn" },
+                        { y:dr3/*{{colleaguestat.3}}*/, label: "Denied" }
+                        ]
+                }]
+        });
+        chart4.render(); 
+
+}
+}
+
+	
+/*
+window.onload = function(){
+var kwb = '{{mycaseid}}';
+var chart2 = new CanvasJS.Chart("chartContainer2", {
+        theme: "dark1", // "light1", "light2", "dark1", "dark2"
+        exportEnabled: true,
+        animationEnabled: true,
+        title: {
+                text: "Hello, applicant "+kwb+", here is the statistics on your colleagues"
+        },
+        data: [{
+                type: "pie",
+                startAngle: 30,
+                toolTipContent: "<b>{label}</b>: {y}",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}",
+                dataPoints: [
+                        { y: {{colleaguestat.0}}, label: "Certified" },
+                        { y: {{colleaguestat.1}}, label: "Certified-Withdrawn" },
+                        { y: {{colleaguestat.2}}, label: "Withdrawn" },
+                        { y: {{colleaguestat.3}}, label: "Denied" },
+                        ]
+                }]
+        });
+        chart2.render(); 
+	
+
+}*/
+
+
+</script>
+  </head>
+  <body>
+       
+   <nav class="navbar navbar-inverse navbar-toggleable-md navbar-light bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+      </button>
+  <a class="navbar-brand" href="#">H1B-Statistics</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'MyCase' %}">MyCase</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'Statistics' %}">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Prediction' %}">Prediction</a>
+      </li>
+    </ul>
+
+
+	  </div>
+	</nav>
+	     <div id="statbycompany">
+               <p class="lead" align="center">Enter key word to see company based statistics</p>
+               <p style="margin-left:25px">You can see statistics on certain companies </p>
+                  <form class="form-inline" id="form0" method="GET" action="statcompany">
+                  <div class="form-group mx-sm-3">
+                  <p class = "lead" >Please input company name.</p>
+                  <br>
+                  <input class = "form-control" id="cmpname" name = "cmpname" placeholder = "e.g Intel Corporation">
+                  </div>
+		  <select class = "form-control mx-sm-3" id="cmpstat" name="cmpstat">
+		  <option value="list">See all results</option>
+		  <option value="chart">See Statistics</option>
+		  </select>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  </form>
+		   <p>{{result3}}</p>
+		  {% if statcmpres %}
+		  <div id="chartContainer1" style="margin-left: 40px; height: 300px; width: 90%;"></div>
+		  {% endif %}
+                  {% if cmpresult %}
+                  <div class="tableresult">
+                  <table id="companytable">
+                    <tr>
+                      <th>Case ID</th>
+                      <th>Employer Name</th>
+                      <th>Current Wage</th>
+                      <th>Domain</th>
+                      <th>Worksite</th>
+                      <th>Status</th>
+                    </tr>
+                        {% for item in cmpresult %}
+                        <tr>
+                        <td>{{item.0}}</td>
+                        <td>{{item.1}}</td>
+                        <td>{{item.2}}</td>
+                        <td>{{item.3}}</td>
+                        <td>{{item.4}}</td>
+                        <td>{{item.5}}</td>
+                        </tr>
+                        {% endfor %}
+                  </table>
+                  </div>
+                  {% endif %}
+                  </div>
+          
+		  <div id="statbystate">
+    		   <p class="lead" align="center">Select state to see location-based statistics</p>
+		   <p style="margin-left:15px">You can see what applicants in different states do, what their salaries are, and whether their case is certified </p>
+		 <form class="form-inline" method="GET" action="statstate">
+		  <div class="form-group mx-sm-3" id="form2">
+		    <label for="state" class="sr-only">StatbyState</label>
+		     <select class="form-control" id="state" name="state" >
+		    <option value="ALABAMA">Alabama</option>
+		    <option value="ALASKA">Alaska</option>
+		    <option value="ARIZONA">Arizona</option>
+		    <option value="ARKANSAS">Arkansas</option>
+		    <option value="CALIFORNIA">California</option>
+		    <option value="COLORADO">Colorado</option>
+		    <option value="CONNECTICUT">Connecticut</option>
+		    <option value="DELAWARE">Delaware</option>
+		    <option value="DISTRICT OF COLUMBIA">District Of Columbia</option>
+		    <option value="FLORIDA">Florida</option>
+		    <option value="GEORGIA">Georgia</option>
+		    <option value="HAWAII">Hawaii</option>
+		    <option value="IDAHO">Idaho</option>
+		    <option value="ILLINOIS">Illinois</option>
+		    <option value="INDIANA">Indiana</option>
+		    <option value="IOWA">Iowa</option>
+		    <option value="KANSAS">Kansas</option>
+		    <option value="KENTUCKY">Kentucky</option>
+		    <option value="LOUISIANA">Louisiana</option>
+		    <option value="MAINE">Maine</option>
+		    <option value="MARYLAND">Maryland</option>
+		    <option value="MASSACHUSETTS">Massachusetts</option>
+		    <option value="MICHIGAN">Michigan</option>
+		    <option value="MINNESOTA">Minnesota</option>
+		    <option value="MISSISSIPPI">Mississippi</option>
+		    <option value="MISSOURI">Missouri</option>
+		    <option value="MONTANA">Montana</option>
+		    <option value="NEBRASKA">Nebraska</option>
+		    <option value="NEVADA">Nevada</option>
+		    <option value="NEW HAMPSHIRE">New Hampshire</option>
+		    <option value="NEW JERSEY">New Jersey</option>
+		    <option value="NEW MEXICO">New Mexico</option>
+		    <option value="NEW YORK">New York</option>
+		    <option value="NORTH CAROLINA">North Carolina</option>
+		    <option value="NORTH DAKOTA">North Dakota</option>
+		    <option value="OHIO">Ohio</option>
+		    <option value="OKLAHOMA">Oklahoma</option>
+		    <option value="OREGON">Oregon</option>
+		    <option value="PENNSYLVANIA">Pennsylvania</option>
+		    <option value="RHODE ISLAND">Rhode Island</option>
+		    <option value="SOUTH CAROLINA">South Carolina</option>
+		    <option value="SOUTH DAKOTA">South Dakota</option>
+		    <option value="TENNESSEE">Tennessee</option>
+		    <option value="TEXAS">Texas</option>
+		    <option value="UTAH">Utah</option>
+		    <option value="VERMONT">Vermont</option>
+		    <option value="VIRGINIA">Virginia</option>
+		    <option value="WASHINGTON">Washington</option>
+		    <option value="WEST VIRGINIA">West Virginia</option>
+		    <option value="WISCONSIN">Wisconsin</option>
+		    <option value="WYOMING">Wyoming</option>
+	    </select>
+		  </div>
+		  <button type="submit" class="btn btn-success">Submit</button>
+		  </form>
+		   <div id="chartContainer4" style="margin-left: 40px; height: 300px; width: 90%;"></div>
+		  </div>
+			
+		  <div id="statlikeme">
+		  <p class="lead" align="center">Enter your information to see statistics on people like you </p>
+		  <p style="margin-left:25px">You can see cases from applicants who works in the same domain and same region as you </p>
+		  <form class="form-inline" id="form3" method="GET" action="statlikeme">
+		  <div class="form-group mx-sm-3">
+		  <p class = "lead" >Please input your caseid.</p>
+		  <br>	
+		  <input class = "form-control" id="caseid" name = "caseid" placeholder = "e.g 10000">
+		  </div>
+		<select class = "form-control mx-sm-3" id="likemestat" name="likemestat">
+                  <option value="list">See all results</option>
+                  <option value="chart">See Statistics</option>
+                  </select>
+		  <button type="submit" class="btn btn-success">Submit</button>
+		  </form>
+		   {% if likemeres %}
+                  <div id="chartContainer3" style="margin-left: 40px; height: 300px; width: 90%;"></div>
+                  {% endif %}
+		  {% if qresult %}
+		  <div class="tableresult">
+		  <table id="likemetable">
+		    <tr>
+		      <th>Case ID</th>
+		      <th>Employer Name</th>
+		      <th>Current Wage</th>
+		      <th>Domain</th>
+		      <th>Worksite</th>
+		      <th>Status</th> 
+		    </tr>
+			{% for item in qresult %}
+			<tr>
+			<td>{{item.0}}</td>
+			<td>{{item.1}}</td>
+			<td>{{item.2}}</td>
+			<td>{{item.3}}</td>
+			<td>{{item.4}}</td>
+			<td>{{item.5}}</td>
+			</tr>
+			{% endfor %}
+		  </table>
+		  </div>
+		  {% endif %}
+		  </div>
+	   <div id="statcolleague">
+                  <p class="lead" align="center">Enter your information to see statistics on applicants from your company</p>
+                  <p style="margin-left:25px">You can see cases from applicants who works in the same company and worksite as you</p>
+                  <form class="form-inline" id="form4" method="GET" action="statcolleague">
+                  <div class="form-group mx-sm-3">
+                  <p class = "lead" >Please input your caseid. </p>
+                  <br>
+                  <input class = "form-control" id="caseid2" name = "caseid2" placeholder = "e.g 10000">
+                  </div>
+		  <select class = "form-control mx-sm-3" id="colleaguestat" name="colleaguestat">
+                  <option value="list">See all results</option>
+                  <option value="chart">See Statistics</option>
+                  </select>
+
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  </form>
+		  <p>{{result2}}</p>
+                  {% if colleaguestat %}
+                  <div id="chartContainer2" style="margin-left: 40px; height: 300px; width: 90%;"></div>
+                  {% endif %}
+                  {% if cresult %}
+                  <div class="tableresult">
+                  <table id="colleaguetable">
+                    <tr>
+                      <th>Case ID</th>
+                      <th>Employer Name</th>
+                      <th>Current Wage</th>
+                      <th>Domain</th>
+                      <th>Worksite</th>
+                      <th>Status</th>
+                    </tr>
+                        {% for item in cresult %}
+                        <tr>
+                        <td>{{item.0}}</td>
+                        <td>{{item.1}}</td>
+                        <td>{{item.2}}</td>
+                        <td>{{item.3}}</td>
+                        <td>{{item.4}}</td>
+                        <td>{{item.5}}</td>
+                        </tr>
+                        {% endfor %}
+                  </table>
+                  </div>
+                  {% endif %}
+                  </div>
+		<a href="{% url 'visual' %}"  class="btn btn-info">See City Bubbles<a>
+		<a href="{% url 'visual2' %}"  class="btn btn-info">See Job Name Bubbles<a>
+		<a href="{% url 'visual3' %}"  class="btn btn-info">See Worksite Bubbles<a>
+</html>  
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-body">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-bl">
+
